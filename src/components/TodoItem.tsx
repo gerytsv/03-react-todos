@@ -1,10 +1,14 @@
 import './TodoItem.css';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Todo, TodoStatus } from '../model/todo-model';
 
-export type TodoItemProps = { todo: Todo };
+export type TodoItemProps = { todo: Todo ,  onDeleteTodo: any};
 
-const TodoItem = ( {todo} : TodoItemProps) => {
+const TodoItem: FunctionComponent<TodoItemProps>  = ( {todo, onDeleteTodo} ) => {
+	const deleteTodo = (event: any) => {
+		onDeleteTodo(todo)
+	}
+
     return (
         <div className='TodoItem'>
             <span className='TodoItem-text'>
@@ -13,6 +17,7 @@ const TodoItem = ( {todo} : TodoItemProps) => {
             </span>
             <span className='TodoItem-right'>
                 <span className='TodoItem-status'>{TodoStatus[todo.status]}</span>
+				<button className='button' onClick={deleteTodo}>DELETE</button>
             </span>
         </div>
     );

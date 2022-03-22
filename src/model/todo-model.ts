@@ -12,7 +12,7 @@ export class Todo {
 
     id = ++Todo.nextId;
 
-    constructor(text: string, status: TodoStatus = TodoStatus.ACTIVE) {
+    constructor(text: string = '', status: TodoStatus = TodoStatus.ACTIVE) {
         this.text = text;
         this.status = status;
     }

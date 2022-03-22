@@ -4,13 +4,13 @@ import React from 'react';
 import TodoItem from './TodoItem';
 import { Todo } from '../model/todo-model';
 
-export type TodoListProps = { todos: Todo[] };
+export type TodoListProps = { todos: Todo[], onDeleteTodo: any };
 
-const TodoList = ({ todos }: TodoListProps) => {
+const TodoList = ({ todos, ...props }: TodoListProps) => {
     return (
         <ul>
             {todos.map(( todo ) => (
-                <TodoItem key={todo.id} todo={todo} />
+                <TodoItem key={todo.id} todo={todo} {...props}/>
             ))}
         </ul>
     );
